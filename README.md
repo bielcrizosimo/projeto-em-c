@@ -12,7 +12,7 @@ Arquitetura de I/O (Mapeamento de 8 Bits)
 
 O estado da planta é representado dinamicamente em tempo real através de um vetor de registradores bit a bit:
 
-Bit 1 | Bit 2 | Bit 3 | Bit 4 | Bit 5 | Bit 6 | Bit 7 | Bit 8
+Bit 1  | Bit 2 | Bit 3 | Bit 4 | Bit 5 | Bit 6 | Bit 7 | Bit 8
 
 On/Off | N/B | N/A | F_C | F_H | Agitd | Bomba | Alert
 
@@ -21,9 +21,9 @@ Liga/Desliga | Nível Baixo | Nível Alto | Válvula Frio | Válvula Quente | Ag
 Fluxo de Funcionamento
 
 O ciclo operacional completo exige um tempo de retenção ativa de 100 segundos, divididos em sequências estritas:
-- Passos 01 a 05: Inicialização, injeção fracionada de fluido quente (F_H) e frio (F_C), e monitoramento de nível até atingir o limite máximo.
-- Passos 06 a 08: Partida do agitador mecânico (Agitd) por 20 segundos para homogeneização e equalização térmica (prevenção contra choques térmicos e cavitação).
-- Passos 09 a 11: Acionamento da bomba de recalque (Bomba), escoamento progressivo e finalização do ciclo com segurança.
+Passos 01 a 05: Inicialização, injeção fracionada de fluido quente (F_H) e frio (F_C), e monitoramento de nível até atingir o limite máximo.
+Passos 06 a 08: Partida do agitador mecânico (Agitd) por 20 segundos para homogeneização e equalização térmica (prevenção contra choques térmicos e cavitação).
+Passos 09 a 11: Acionamento da bomba de recalque (Bomba), escoamento progressivo e finalização do ciclo com segurança.
 
 Engenharia de Segurança: Intertravamento
 
@@ -34,9 +34,8 @@ if ((NB == 0 && NA == 1) || (OnOff == 1 && NB == 1 && NA == 0 && FH == 0 && Agit
     Alert = 1;
     continue;
 }
-
-- Inconsistência Geométrica: Identifica se o sensor superior indica presença de líquido sem ocupar a base (NB=0 e NA=1), travando o sistema instantaneamente.
-- Proteção contra Estado Órfão: Impede inicializações de caldeiras com volume residual desconhecido após quedas de energia.
+Inconsistência Geométrica: Identifica se o sensor superior indica presença de líquido sem ocupar a base (NB=0 e NA=1), travando o sistema instantaneamente.
+Proteção contra Estado Órfão: Impede inicializações de caldeiras com volume residual desconhecido após quedas de energia.
 
 Como Compilar e Executar
 
