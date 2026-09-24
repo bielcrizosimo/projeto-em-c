@@ -13,6 +13,7 @@ Arquitetura de I/O (Mapeamento de 8 Bits)
 O estado da planta é representado dinamicamente em tempo real através de um vetor de registradores bit a bit:
 
 Bit 1 | Bit 2 | Bit 3 | Bit 4 | Bit 5 | Bit 6 | Bit 7 | Bit 8
+
 On/Off | N/B | N/A | F_C | F_H | Agitd | Bomba | Alert
 Liga/Desliga | Nível Baixo | Nível Alto | Válvula Frio | Válvula Quente | Agitador | Bomba | Emergência
 
