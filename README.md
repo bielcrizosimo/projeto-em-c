@@ -55,7 +55,4 @@ gcc projeto-final-lop.c -o caldeira
 ./caldeira
 
 Autor
-
 - Gabriel Crizósimo
-
-Escola SENAI Almirante Tamandaré — Curso Técnico em Mecatrônica
