@@ -53,6 +53,3 @@ gcc projeto-final-lop.c -o caldeira
 
 4. Execute o binário:
 ./caldeira
-
-Autor
-- Gabriel Crizósimo
