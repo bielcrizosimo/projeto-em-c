@@ -47,13 +47,13 @@ int main() {
             continue;
         }
 
-        // 2. Sistema ligado: Solicita os sensores de nível
+        // sistema ligado: Solicita os sensores de nivel
         printf("Situacao sensor Nbaixo: ");
         scanf("%d", &NB);
         printf("Situacao sensor NAlto: ");
         scanf("%d", &NA);
 
-        // --- VALIDAÇÃO DE EMERGÊNCIA (Intertravamento) ---
+        // Intertravamento ---
         if ((NB == 0 && NA == 1) || (OnOff == 1 && NB == 1 && NA == 0 && FH == 0 && Agitd == 0)) {
             OnOff = 0;
             Alert = 1;
@@ -62,7 +62,7 @@ int main() {
 
         // --- CASO 1: CALDEIRA VAZIA (N/B = 0 e N/A = 0) ---
         if (NB == 0 && NA == 0) {
-            // Passo 1: Ativar válvula de fluido quente
+            // Ativar válvula de fluido quente
             FH = 1;
             system("cls");
             printf("===============================================================\n");
@@ -74,7 +74,7 @@ int main() {
             printf("Aguarde a ativacao da valvula de fluido quente! (observe o atuador F_H) (5s)\n");
             esperar(5);
 
-            // Passo 2: Enchimento parcial até atingir nível baixo
+            // Enchimento parcial até atingir nível baixo
             system("cls");
             printf("===============================================================\n");
             printf(" Controle de uma caldeira \n");
@@ -86,7 +86,7 @@ int main() {
             esperar(10);
             NB = 1; // Ativou o sensor após os 10s
 
-            // Passo 3: Ativar válvula de fluido frio
+            //  Ativar válvula de fluido frio
             FC = 1;
             system("cls");
             printf("===============================================================\n");
@@ -98,7 +98,7 @@ int main() {
             printf("Aguarde a ativacao da valvula de fluido frio! (observe o atuador F_C) (5s)\n");
             esperar(5);
 
-            // Passo 4: Enchimento com ambos ativos
+            // Enchimento com ambos ativos
             system("cls");
             printf("===============================================================\n");
             printf(" Controle de uma caldeira \n");
@@ -108,9 +108,9 @@ int main() {
             printf("===============================================================\n\n");
             printf("Aguarde o enchimento da caldeira com fluido quente e frio (observe o atuador F_C) (15s)\n");
             esperar(15);
-            FC = 0; // Desativa a fria conforme roteiro
+            FC = 0; // Desativa a fria 
 
-            // Passo 5: Termina o enchimento com a quente aberta
+            //  Termina o enchimento com a quente aberta
             system("cls");
             printf("===============================================================\n");
             printf(" Controle de uma caldeira \n");
@@ -124,9 +124,9 @@ int main() {
             NA = 1; // Caldeira cheia
         }
 
-        // --- SEQUÊNCIA DE MISTURA E ESVAZIAMENTO (Passos 6 ao 11) ---
+        //  mistura e esvaziamento
         if (NB == 1 && NA == 1) {
-            // Passo 6: Ativar Agitador
+            // Ativar Agitador
             Agitd = 1;
             system("cls");
             printf("===============================================================\n");
@@ -138,7 +138,7 @@ int main() {
             printf("Aguarde a ativacao do agitador! (observe o atuador Agitd) (5s)\n");
             esperar(5);
 
-            // Passo 7: Agitador trabalhando
+            //  Agitador trabalhando
             system("cls");
             printf("===============================================================\n");
             printf(" Controle de uma caldeira \n");
@@ -149,7 +149,7 @@ int main() {
             printf("AGUARDE: Agitador ativo! (20s)\n");
             esperar(20);
 
-            // Passo 8: Desliga agitador e liga bomba
+            //  Desliga agitador e liga bomba
             Agitd = 0;
             Bomba = 1;
             system("cls");
@@ -162,7 +162,7 @@ int main() {
             printf("Aguarde a ativacao da bomba e desativacao do agitador (observe os atuadores Agitd e bomba) (5s)\n");
             esperar(5);
 
-            // Passo 9: Esvaziando (Sai do nível Alto)
+            //  Esvaziando (Sai do nível Alto)
             system("cls");
             printf("===============================================================\n");
             printf(" Controle de uma caldeira \n");
@@ -174,7 +174,7 @@ int main() {
             esperar(10);
             NA = 0;
 
-            // Passo 10: Esvaziando por completo (Sai do nível baixo e desliga bomba)
+            //  Esvaziando por completo (Sai do nível baixo e desliga bomba)
             system("cls");
             printf("===============================================================\n");
             printf(" Controle de uma caldeira \n");
@@ -187,7 +187,7 @@ int main() {
             NB = 0;
             Bomba = 0;
 
-            // Passo 11: Fim do ciclo
+            //  Fim do ciclo
             system("cls");
             printf("===============================================================\n");
             printf(" Controle de uma caldeira \n");
